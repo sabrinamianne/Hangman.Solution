@@ -15,7 +15,7 @@
     <button type="submit" name="newGame=">Play again!</button>
   </form>
 }
-else if(Model.GetDisplay() == Model.GetWordToFind())
+else if(Model.CheckDisplay() == Model.GetWordToFind())
 
 {
   <p><img src='~/img/win.png' height="550px"/></p><br><br><br>
@@ -34,7 +34,7 @@ else
 
 <form action="/game/newguess" method="post">
   <h2><label for="newguess">Enter a letter:  </label></h2>
-  <input type="text" name="newguess" id="newguess" maxlength="1" minlength="1"><br><br>
+  <input autofocus type="text" name="newguess" id="newguess" maxlength="1" minlength="1"><br><br>
   <button class="btn btn-info" type="submit" name="submitLetter">Submit</button>
 </form><br><br>
 @Model.GetErrorMessage();

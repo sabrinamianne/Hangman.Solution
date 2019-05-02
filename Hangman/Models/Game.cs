@@ -39,6 +39,11 @@ namespace Hangman.Models
 
     public string GetDisplay()
     {
+      return string.Join(" ", _display);
+    }
+
+    public string CheckDisplay()
+    {
       return string.Join("", _display);
     }
 
