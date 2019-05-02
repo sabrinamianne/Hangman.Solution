@@ -1,0 +1,24 @@
+@using System;
+@using System.Collections.Generic;
+@using Hangman.Models;
+
+@if(Model.GetLives()<1)
+{
+  <p>You are dead!</p>
+}
+else if(Model.GetDisplay() == Model.GetWordToFind())
+{
+  <p>You win!</p>
+}
+else
+{
+<p>You have  @Model.GetLives() chances to find the right word.</p>
+
+<p>@Model.GetDisplay()</p>
+
+<form action="/game/newguess" method="post">
+  <label for="newguess">Enter a letter:</label>
+  <input type="text" name="newguess" id="newguess">
+  <button type="submit" name="submitLetter">Submit</button>
+</form>
+}
