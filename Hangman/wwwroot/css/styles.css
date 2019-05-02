@@ -1,0 +1,22 @@
+.jumbotron {
+  background-color: yellow;
+  text-align: center;
+}
+
+body {
+  background-color: violet;
+}
+
+p {
+  font-size: 30px;
+}
+
+img {
+  margin-left: 250px;
+}
+
+
+#home {
+  margin-top: 10%;
+  margin-left: 40%;
+}

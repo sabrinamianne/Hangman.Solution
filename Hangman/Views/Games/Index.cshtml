@@ -2,23 +2,45 @@
 @using System.Collections.Generic;
 @using Hangman.Models;
 
+@{
+  Layout= "_layout";
+}
+
+
 @if(Model.GetLives()<1)
 {
-  <p>You are dead!</p>
+  <p><img src='~/img/@(Model.GetLives()).png' height="550px"/></p><br><br><br>
+  <p>You are dead! The word was "@Model.GetWordToFind()".</p>
+  <form action="/game/new" method="post">
+    <button type="submit" name="newGame=">Play again!</button>
+  </form>
 }
 else if(Model.GetDisplay() == Model.GetWordToFind())
+
 {
+  <p><img src='~/img/win.png' height="550px"/></p><br><br><br>
   <p>You win!</p>
+  <form action="/game/new" method="post">
+    <button class="btn btn-info" type="submit" name="newGame=">Play again!</button>
+  </form>
 }
 else
 {
+<p><img src='~/img/@(Model.GetLives()).png' height="550px"/></p><br><br><br>
 <p>You have  @Model.GetLives() chances to find the right word.</p>
+
 
 <p>@Model.GetDisplay()</p>
 
 <form action="/game/newguess" method="post">
-  <label for="newguess">Enter a letter:</label>
-  <input type="text" name="newguess" id="newguess">
-  <button type="submit" name="submitLetter">Submit</button>
-</form>
+  <h2><label for="newguess">Enter a letter:  </label></h2>
+  <input type="text" name="newguess" id="newguess" maxlength="1" minlength="1"><br><br>
+  <button class="btn btn-info" type="submit" name="submitLetter">Submit</button>
+</form><br><br>
+@Model.GetErrorMessage();
+
+@if(Model.GetListLetterInput().Length > 0)
+{
+  <p> You've already played these letters => @Model.GetListLetterInput() </p>
+}
 }

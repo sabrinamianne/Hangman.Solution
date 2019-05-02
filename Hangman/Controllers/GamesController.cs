@@ -5,6 +5,8 @@ namespace Hangman.Controllers
 {
   public class GamesController : Controller
   {
+                               
+
     [HttpGet("/index")]
     public ActionResult Index()
     {
